@@ -20,14 +20,10 @@ class ProcessorClient():
 
         currency_data =  rest_service.convert_currency(start_period, end_period, currency_from, currency_to)
 
-        data_dict = xmltodict.parse(currency_data.text)
+        currency_dict = xmltodict.parse(currency_data.text)
 
-        generic_data = data_dict.pop("message:GenericData")
+        generic_data = currency_dict.pop("message:GenericData")
 
+        GenericData(**generic_data)
 
-        g = GenericData(**generic_data)
-
-        breakpoint()
-
-
-        # return json_data.json()
+        return generic_data

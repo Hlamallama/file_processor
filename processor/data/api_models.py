@@ -1,3 +1,4 @@
+from ast import alias
 from datetime import datetime
 import typing
 from dataclasses import dataclass
@@ -9,6 +10,7 @@ class HeaderMessage(BaseModel):
     Test: bool = Field(alias="message:Test")
     Prepared: datetime= Field(alias="message:Prepared")
     Sender: typing.Dict = Field(alias="message:Sender")
+    Structure:  typing.Dict = Field(alias="message:Structure")
 
 
 class HeaderDataStructure(BaseModel):
@@ -18,38 +20,47 @@ class HeaderDataStructure(BaseModel):
 
 @dataclass
 class genericValue():
-    id: str
-    value: str
+    id: str = Field(alias="@id")
+    value: str = Field(alias="@value")
 
 class genericAtributes(BaseModel):
-    Attributes: genericValue
+    Attributes: genericValue = Field(alias="generic:Attributes")
 
 class genericObsValue(BaseModel):
-    value: str
+    value: str =  Field(alias="@value")
 
 class genericObsDimension(BaseModel):
-    value: str
+   value: str =  Field(alias="@value")
 
-class genericObs(BaseModel): #list
-    ObsDimension: genericObsDimension
-    ObsValue: genericObsValue
-    Attributes: genericAtributes
+class genericObs(BaseModel):
+    ObsDimension: genericObsDimension = Field(alias="generic:ObsDimension")
+    ObsValue: genericObsValue = Field(alias="generic:ObsValue")
+    Attributes: genericAtributes = Field(alias="generic:Attributes")
 
 
 class genericSeriesKey(BaseModel):
-    value: typing.List[genericValue]
+    value: typing.List[genericValue] = Field(alias="generic:Value")
 
 
 class genericSeries(BaseModel):
-    series: genericSeriesKey
-    attribtes: genericAtributes
-    obs: typing.List[genericObs]
+    series_key: typing.Dict = Field(alias="generic:SeriesKey")
+    attributes: typing.Dict = Field(alias="generic:Attributes")
+    obs: typing.List[typing.Dict] = Field(alias="generic:Obs")
 
 class MessageDataSet(BaseModel):
     action: str = Field(alias="@action")
     validFromDate:datetime = Field(alias="@validFromDate")
     structureRef: str = Field(alias="@structureRef")
-    series: genericSeries
+    series: genericSeries = Field(alias="generic:Series")
+
+
+class FileRequestData(BaseModel):
+    date: datetime
+    country: str
+    purchase: float
+    currency = str
+    net = float
+    Vat = float
 
 
 @dataclass
@@ -60,8 +71,8 @@ class GenericData(BaseModel):
     xsi: str = Field(alias="@xmlns:xsi")
     generic: str = Field(alias="@xmlns:generic")
     schemaLocation: str = Field(alias="@xsi:schemaLocation")
-    # Header: typing.Dict[HeaderMessage, HeaderDataStructure]
-    # DataSet: MessageDataSet
+    header: HeaderMessage = Field(alias="message:Header")
+    dataSet: MessageDataSet = Field(alias="message:DataSet")
 
 
     def __init__(self, **kwargs):

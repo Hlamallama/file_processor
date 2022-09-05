@@ -7,7 +7,7 @@ class FileData(models.Model):
     purchase = models.FloatField()
     currency = models.CharField(max_length=200)
     net = models.FloatField()
-    Vat = models.IntegerField()
+    Vat = models.FloatField()
 
 
 class Country(models.Model):
