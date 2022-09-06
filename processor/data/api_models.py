@@ -45,7 +45,7 @@ class genericSeriesKey(BaseModel):
 class genericSeries(BaseModel):
     series_key: typing.Dict = Field(alias="generic:SeriesKey")
     attributes: typing.Dict = Field(alias="generic:Attributes")
-    obs: typing.List[typing.Dict] = Field(alias="generic:Obs")
+    series: typing.Dict = Field(alias="generic:Series")
 
 class MessageDataSet(BaseModel):
     action: str = Field(alias="@action")

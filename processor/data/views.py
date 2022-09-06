@@ -1,3 +1,4 @@
+import datetime
 from django.shortcuts import render
 
 import csv
@@ -8,10 +9,14 @@ from .client import ProcessorClient
 
 from .api_models import FileRequestData
 
+import xml.etree.ElementTree as ET
+
 
 class FileProcessor():
+    def __init__(self):
+        pass
 
-    def process_file(self, csv_file):
+    def processFile(self, csv_file):
         """"""
 
         client = ProcessorClient()
@@ -20,21 +25,39 @@ class FileProcessor():
             csvreader = csv.reader(file)
             for row in csvreader:
 
-                breakpoint()
-                FileRequestData(**row)
+                #TODO change therow to dict
 
-                currency = client.convert_currency(
-                    start_period=row.date,
-                    end_period=row.date,
-                    currency_from=row.currency,
+                startTime = datetime.date.fromisoformat(row[0])
+                endTime = startTime + datetime.timedelta(days=1)
+                currencyFrom = row[3]
+
+                currency_data = client.convert_currency(
+                    start_period=startTime,
+                    end_period=endTime,
+                    currency_from=currencyFrom,
                 )
 
-                file_data = FileData()
-                file_data.date = row
-                file_data.country = row
-                file_data.purchase = row
-                file_data.currency = currency
-                file_data.net = row
-                file_data.Vat = row
+                ex_rate = currency_data['message:DataSet']['generic:Series']['generic:Series']['generic:ObsValue']['@value']
+
+
+                # FileRequestData(**file_data)
+
+                file_data = FileData(
+                    date= row[0],
+                    country = row[1], 
+                    purchase = row[2],
+                    currency = ex_rate,
+                    net = int(row[4]),
+                    Vat = float(row[5]))
 
                 file_data.save()
+
+
+    def retrieveRows(self, country, date):
+        """
+        """
+
+        data = FileData.objects.filter(country=country,date=date)
+
+        return data
+

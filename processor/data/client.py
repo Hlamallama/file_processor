@@ -1,6 +1,4 @@
 
-
-import json
 import xmltodict
 
 from .rest_service import RestService
@@ -24,6 +22,8 @@ class ProcessorClient():
 
         generic_data = currency_dict.pop("message:GenericData")
 
-        GenericData(**generic_data)
+        breakpoint()
 
-        return generic_data
+        tt = GenericData(**generic_data)
+
+        return tt

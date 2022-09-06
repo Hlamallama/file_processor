@@ -1,16 +1,10 @@
-import typing
+
 from django.db import models
 
 class FileData(models.Model):
-    date = models.DateTimeField()
-    country = models.CharField(max_length=200)
+    date = models.CharField(max_length=9)
+    country = models.CharField(max_length=2)
     purchase = models.FloatField()
-    currency = models.CharField(max_length=200)
+    currency = models.CharField(max_length=3)
     net = models.FloatField()
     Vat = models.FloatField()
-
-
-class Country(models.Model):
-    id = models.DateTimeField()
-    currency = models.CharField(max_length=200)
-    name = models.FloatField()

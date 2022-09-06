@@ -85,33 +85,13 @@
                         }
                     ]
                 },
-                "generic:Obs": [
+                "generic:Series": [
                     {
                         "generic:ObsDimension": {
                             "@value": "2020-01-02"
                         },
                         "generic:ObsValue": {
                             "@value": "15.7496"
-                        },
-                        "generic:Attributes": {
-                            "generic:Value": [
-                                {
-                                    "@id": "OBS_STATUS",
-                                    "@value": "A"
-                                },
-                                {
-                                    "@id": "OBS_CONF",
-                                    "@value": "F"
-                                }
-                            ]
-                        }
-                    },
-                    {
-                        "generic:ObsDimension": {
-                            "@value": "2020-01-03"
-                        },
-                        "generic:ObsValue": {
-                            "@value": "15.9222"
                         },
                         "generic:Attributes": {
                             "generic:Value": [
