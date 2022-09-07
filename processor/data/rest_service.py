@@ -1,5 +1,6 @@
 
 
+import datetime
 import requests
 
 
@@ -11,7 +12,7 @@ class RestService():
         self.flowRef ='EXR'
 
 
-    def convert_currency(self, start_period, end_period, currency_from, currency_to: str = 'EUR') -> requests.Response:
+    def convert_currency(self, start_period:datetime.date, end_period: datetime.date, currency_from: str, currency_to: str = 'EUR') -> requests.Response:
         """
         Converts currency to EUR.
 
@@ -31,6 +32,6 @@ class RestService():
             'endPeriod': end_period,
         }
 
-        response = requests.get(url=url, params=param)
+        response = requests.get(url=url, params=param)  # type: ignore
 
         return response

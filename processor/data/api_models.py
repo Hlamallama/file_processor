@@ -51,11 +51,11 @@ class MessageDataSet(BaseModel):
     action: str = Field(alias="@action")
     validFromDate:datetime = Field(alias="@validFromDate")
     structureRef: str = Field(alias="@structureRef")
-    series: genericSeries = Field(alias="generic:Series")
+    series: typing.Dict = Field(alias="generic:Series")
 
 
 class FileRequestData(BaseModel):
-    date: datetime
+    date:str
     country: str
     purchase: float
     currency = str
