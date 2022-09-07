@@ -1,6 +1,6 @@
 import datetime
 import typing
-from django.shortcuts import render
+from django.core import serializers
 
 import csv
 
@@ -9,8 +9,6 @@ from .models import FileData
 from .client import ProcessorClient
 
 from .api_models import FileRequestData
-
-import xml.etree.ElementTree as ET
 
 
 class FileProcessor():
@@ -28,20 +26,17 @@ class FileProcessor():
                 csvreader = csv.reader(file)
                 for row in csvreader:
 
-                    #TODO change therow to dict
-
-                    startTime = datetime.date.fromisoformat(row[0])
-                    endTime = startTime + datetime.timedelta(days=1)
-                    currencyFrom = row[3]
+                    start_time = datetime.date.fromisoformat(row[0])
+                    end_time = start_time + datetime.timedelta(days=1)
+                    currency_from = row[3]
 
                     currency_data = self.client.convert_currency(
-                        start_period=startTime,
-                        end_period=endTime,
-                        currency_from=currencyFrom,
+                        start_period=start_time,
+                        end_period=end_time,
+                        currency_from=currency_from,
                     )
 
                     ex_rate = currency_data.dataSet.series['generic:Obs']['generic:ObsValue']['@value']
-
 
                     file_data = FileData(
                         date=row[0],
@@ -78,5 +73,7 @@ class FileProcessor():
 
         data = FileData.objects.filter(country=country,date=date)
 
-        return data
+        json_data = serializers.serialize('json', data)
+
+        return json_data
 

@@ -7,6 +7,7 @@ import requests
 class RestService():
 
     def __init__(self):
+
         self.exchange_rate_url = 'https://sdw-wsrest.ecb.europa.eu/service/'
         self.resource = 'data'
         self.flowRef ='EXR'

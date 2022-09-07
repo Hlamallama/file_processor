@@ -2,6 +2,8 @@
 from django.db import models
 
 class FileData(models.Model):
+    """Models the file data object."""
+
     date = models.CharField(max_length=9)
     country = models.CharField(max_length=2)
     purchase = models.FloatField()

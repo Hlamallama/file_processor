@@ -19,14 +19,21 @@ client = ProcessorClient()
 class currencyTestCase(TestCase):
 
     def setUp(self):
+        """
+        Create File data objects used in the test.
+        """
+
         FileData.objects.create(date="2020-01-01", country="ZA", purchase=100, currency=1, net=70, Vat=15.00)
         FileData.objects.create(date="2020-01-03", country="ZA", purchase=100, currency=1, net=70, Vat=15.00)
         FileData.objects.create(date="2020-01-01", country="US", purchase=100, currency=1, net=70, Vat=15.00)
 
+
+    # 1. test rest service
     def test_currency_exchange(self):
         """
         Test the happy path to get the currency works.
         """
+
         start_date = '2020-01-01'
         end_date = '2020-01-03'
         resp = rest_service.convert_currency(
@@ -38,15 +45,12 @@ class currencyTestCase(TestCase):
         assert resp.status_code == 200
         assert str(resp.url) == 'https://sdw-wsrest.ecb.europa.eu/service/data/EXR/D.ZAR.EUR.SP00.A?startPeriod=2020-01-01&endPeriod=2020-01-03'
 
+
+    # 2. test client
     def test_currency_exchange_client(self):
         """
         Test the client can access the rest service.
         """
-
-        c = client.convert_currency(
-                '2020-01-01',
-                '2020-01-03',
-                currency_from="ZAR")
 
         with open("data/response_200.json") as f:
             fake_currency_data =  json.load(f)
@@ -66,9 +70,9 @@ class currencyTestCase(TestCase):
             )
             mock.assert_called()
 
-        # assert isinstance(fake_currency_data, GenericData)
+        assert isinstance(GenericData(**fake_currency_data), GenericData)
 
-
+    # 3. test bo calls.
     def test_process_file(self):
         """
         Test the processing of CSV data to the file data table and we can get the currency.

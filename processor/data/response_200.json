@@ -1,113 +1,112 @@
-{
-    "message:GenericData": {
-        "@xmlns:message": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message",
-        "@xmlns:common": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common",
-        "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
-        "@xmlns:generic": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/generic",
-        "@xsi:schemaLocation": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://sdw-wsrest.ecb.europa.eu:443/vocabulary/sdmx/2_1/SDMXMessage.xsd http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common https://sdw-wsrest.ecb.europa.eu:443/vocabulary/sdmx/2_1/SDMXCommon.xsd http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/generic https://sdw-wsrest.ecb.europa.eu:443/vocabulary/sdmx/2_1/SDMXDataGeneric.xsd",
-        "message:Header": {
-            "message:ID": "7097c1cf-9c67-4c55-9669-3c63fa53f1db",
-            "message:Test": "false",
-            "message:Prepared": "2022-09-05T13:08:29.190+02:00",
-            "message:Sender": {
-                "@id": "ECB"
-            },
-            "message:Structure": {
-                "@structureID": "ECB_EXR1",
-                "@dimensionAtObservation": "TIME_PERIOD",
-                "common:Structure": {
-                    "URN": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:ECB_EXR1(1.0)"
-                }
-            }
+ {
+    "@xmlns:message": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message",
+    "@xmlns:common": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common",
+    "@xmlns:xsi": "http://www.w3.org/2001/XMLSchema-instance",
+    "@xmlns:generic": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/generic",
+    "@xsi:schemaLocation": "http://www.sdmx.org/resources/sdmxml/schemas/v2_1/message https://sdw-wsrest.ecb.europa.eu:443/vocabulary/sdmx/2_1/SDMXMessage.xsd http://www.sdmx.org/resources/sdmxml/schemas/v2_1/common https://sdw-wsrest.ecb.europa.eu:443/vocabulary/sdmx/2_1/SDMXCommon.xsd http://www.sdmx.org/resources/sdmxml/schemas/v2_1/data/generic https://sdw-wsrest.ecb.europa.eu:443/vocabulary/sdmx/2_1/SDMXDataGeneric.xsd",
+    "message:Header": {
+        "message:ID": "7097c1cf-9c67-4c55-9669-3c63fa53f1db",
+        "message:Test": "false",
+        "message:Prepared": "2022-09-05T13:08:29.190+02:00",
+        "message:Sender": {
+            "@id": "ECB"
         },
-        "message:DataSet": {
-            "@action": "Replace",
-            "@validFromDate": "2022-09-05T13:08:29.190+02:00",
-            "@structureRef": "ECB_EXR1",
-            "generic:Series": {
-                "generic:SeriesKey": {
-                    "generic:Value": [
-                        {
-                            "@id": "FREQ",
-                            "@value": "D"
-                        },
-                        {
-                            "@id": "CURRENCY",
-                            "@value": "ZAR"
-                        },
-                        {
-                            "@id": "CURRENCY_DENOM",
-                            "@value": "EUR"
-                        },
-                        {
-                            "@id": "EXR_TYPE",
-                            "@value": "SP00"
-                        },
-                        {
-                            "@id": "EXR_SUFFIX",
-                            "@value": "A"
-                        }
-                    ]
-                },
-                "generic:Attributes": {
-                    "generic:Value": [
-                        {
-                            "@id": "TIME_FORMAT",
-                            "@value": "P1D"
-                        },
-                        {
-                            "@id": "TITLE",
-                            "@value": "South African rand/Euro"
-                        },
-                        {
-                            "@id": "UNIT",
-                            "@value": "ZAR"
-                        },
-                        {
-                            "@id": "UNIT_MULT",
-                            "@value": "0"
-                        },
-                        {
-                            "@id": "TITLE_COMPL",
-                            "@value": "ECB reference exchange rate, South African rand/Euro, 2:15 pm (C.E.T.)"
-                        },
-                        {
-                            "@id": "SOURCE_AGENCY",
-                            "@value": "4F0"
-                        },
-                        {
-                            "@id": "COLLECTION",
-                            "@value": "A"
-                        },
-                        {
-                            "@id": "DECIMALS",
-                            "@value": "4"
-                        }
-                    ]
-                },
-                "generic:Series": [
+        "message:Structure": {
+            "@structureID": "ECB_EXR1",
+            "@dimensionAtObservation": "TIME_PERIOD",
+            "common:Structure": {
+                "URN": "urn:sdmx:org.sdmx.infomodel.datastructure.DataStructure=ECB:ECB_EXR1(1.0)"
+            }
+        }
+    },
+    "message:DataSet": {
+        "@action": "Replace",
+        "@validFromDate": "2022-09-05T13:08:29.190+02:00",
+        "@structureRef": "ECB_EXR1",
+        "generic:Series": {
+            "generic:SeriesKey": {
+                "generic:Value": [
                     {
-                        "generic:ObsDimension": {
-                            "@value": "2020-01-02"
-                        },
-                        "generic:ObsValue": {
-                            "@value": "15.7496"
-                        },
-                        "generic:Attributes": {
-                            "generic:Value": [
-                                {
-                                    "@id": "OBS_STATUS",
-                                    "@value": "A"
-                                },
-                                {
-                                    "@id": "OBS_CONF",
-                                    "@value": "F"
-                                }
-                            ]
-                        }
+                        "@id": "FREQ",
+                        "@value": "D"
+                    },
+                    {
+                        "@id": "CURRENCY",
+                        "@value": "ZAR"
+                    },
+                    {
+                        "@id": "CURRENCY_DENOM",
+                        "@value": "EUR"
+                    },
+                    {
+                        "@id": "EXR_TYPE",
+                        "@value": "SP00"
+                    },
+                    {
+                        "@id": "EXR_SUFFIX",
+                        "@value": "A"
                     }
                 ]
-            }
+            },
+            "generic:Attributes": {
+                "generic:Value": [
+                    {
+                        "@id": "TIME_FORMAT",
+                        "@value": "P1D"
+                    },
+                    {
+                        "@id": "TITLE",
+                        "@value": "South African rand/Euro"
+                    },
+                    {
+                        "@id": "UNIT",
+                        "@value": "ZAR"
+                    },
+                    {
+                        "@id": "UNIT_MULT",
+                        "@value": "0"
+                    },
+                    {
+                        "@id": "TITLE_COMPL",
+                        "@value": "ECB reference exchange rate, South African rand/Euro, 2:15 pm (C.E.T.)"
+                    },
+                    {
+                        "@id": "SOURCE_AGENCY",
+                        "@value": "4F0"
+                    },
+                    {
+                        "@id": "COLLECTION",
+                        "@value": "A"
+                    },
+                    {
+                        "@id": "DECIMALS",
+                        "@value": "4"
+                    }
+                ]
+            },
+            "generic:Series": [
+                {
+                    "generic:ObsDimension": {
+                        "@value": "2020-01-02"
+                    },
+                    "generic:ObsValue": {
+                        "@value": "15.7496"
+                    },
+                    "generic:Attributes": {
+                        "generic:Value": [
+                            {
+                                "@id": "OBS_STATUS",
+                                "@value": "A"
+                            },
+                            {
+                                "@id": "OBS_CONF",
+                                "@value": "F"
+                            }
+                        ]
+                    }
+                }
+            ]
         }
     }
 }
+
